@@ -2,8 +2,8 @@ package by.zelenevsky.dto;
 
 public class GuitarsDto {
 
-    private static int quantity = 15;
-    private static String brandName = "   Wodota  ", modelName = " Best Moment !!";
+    private  int quantity;
+    private  String brandName, modelName;
 
     public GuitarsDto(){
 
@@ -15,28 +15,28 @@ public class GuitarsDto {
         this.modelName = modelName;
     }
 
-    public static int getQuantity(){
-        return quantity;
+    public  int getQuantity(){
+        return this.quantity;
     }
-    public static String getBrandName(){
-        return brandName;
+    public  String getBrandName(){
+        return this.brandName;
     }
-    public static String getModelName(){
-        return modelName;
+    public  String getModelName(){
+        return this.modelName;
     }
-    public static void setQuantity(int value){
-        quantity = value;
+    public  void setQuantity(int value){
+        this.quantity = value;
     }
-    public static void setBrandName(String value){
-        brandName = value;
+    public  void setBrandName(String value){
+        this.brandName = value;
     }
-    public static void setModelName(String value) {
-        modelName = value;
+    public  void setModelName(String value) {
+        this.modelName = value;
     }
 
     @Override
     public String toString() {
-        return "You have" + quantity +
-        "of" + brandName + modelName + "]";
+        return "You have " + quantity + " " +
+        "of " + brandName + " " + modelName;
     }
 }
