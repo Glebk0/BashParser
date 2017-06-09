@@ -2,11 +2,9 @@ package by.zelenevsky.rest;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.Set;
 
 import by.zelenevsky.dto.GuitarsDto;
-import by.zelenevsky.execute.DataConnecter;
 
 public class Guitar {
 
@@ -40,21 +38,9 @@ public class Guitar {
         return result;
     }
 
-    /*
-    public static void main(String[] args){
-       String[] guitarsMassive = {"", "", "", "", "", "", "", "","","","","","","",""};
-        String value = "";
-        DataConnecter.connect();
-        Set<GuitarsDto> guitars = Guitar.getGuitarsList();
-        iterator = guitars.iterator();
-        int j =0;
-        while (iterator.hasNext()){
-            guitarsMassive[j] = String.valueOf(iterator.next());
-            j++;
-        }
-        for (int i = 0; i<15; i++)
-            value = value + guitarsMassive[i] + "\n";
-        System.out.print(value);
-    }*/
-
+   /* public static void main(String[] args){
+        Guitar.setGuitarsList(1, "Gibson", "Blue");
+        Guitar.setGuitarsList(2, "Cort", "Accord");
+        Guitar.setGuitarsList(3, "Boobs", "More Boobs");
+*/
 }

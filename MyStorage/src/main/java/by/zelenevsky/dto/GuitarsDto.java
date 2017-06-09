@@ -1,9 +1,12 @@
 package by.zelenevsky.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class GuitarsDto {
 
-    private  int quantity;
-    private  String brandName, modelName;
+    public  int quantity;
+    public  String brandName, modelName;
 
     public GuitarsDto(){
 

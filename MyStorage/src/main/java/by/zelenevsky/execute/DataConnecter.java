@@ -3,6 +3,7 @@ package by.zelenevsky.execute;
 import java.sql.*;
 import by.zelenevsky.rest.Guitar;
 
+
 public class DataConnecter {
 
     private static String url = "jdbc:mysql://localhost:3306/guitars";
@@ -14,20 +15,19 @@ public class DataConnecter {
 
     public static void connect(){
         try {
-           // Guitar guitar = new Guitar();
+            Guitar guitar = new Guitar();
             connection = DriverManager.getConnection(url, user, password);
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select  brand.name, model.name, availability.quantity " +
                     "from brand, model, availability  " +
                     "where availability.model_id = model.id and model.brand_id = brand.id");
-            /*while(resultSet.next()) {
+            while(resultSet.next()) {
                 guitar.setGuitarsList(
                         resultSet.getInt(3),
                         resultSet.getString(1),
                         resultSet.getString(2)
                 );
             }
-            */
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
         } finally {

@@ -1,17 +1,11 @@
 package by.zelenevsky.rest;
 
 
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.xml.crypto.Data;
-
 
 import by.zelenevsky.dto.GuitarsDto;
-import by.zelenevsky.execute.DataConnecter;
+import com.google.gson.Gson;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -21,31 +15,28 @@ public class Client {
 
     @GET
     @Path ("getAll")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
     public String getAllGuitars() {
-        String value = "";
-        DataConnecter.connect();
-        Iterator<GuitarsDto> iterator;
+        Guitar.setGuitarsList(1, "Gibson", "Blue");
+        Guitar.setGuitarsList(2, "Cort", "Accord");
+        Guitar.setGuitarsList(3, "Boobs", "More Boobs");
         Set<GuitarsDto> guitars = Guitar.getGuitarsList();
-        iterator = guitars.iterator();
-        while (iterator.hasNext()){
-            value = value + String.valueOf(iterator.next()) + "\n";
-        }
-        return value;
+        Gson gson = new Gson();
+        String jasonGuitar = gson.toJson(guitars);
+        return jasonGuitar;
     }
+
 
     @GET
     @Path("GET/{model}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getGuitarByModel(@PathParam("model") String model) {
-        String value = "";
-        Iterator<GuitarsDto> iterator;
+    public  String getGuitarByModel(@PathParam("model") String model) {
         Guitar.setGuitarsList(1, "Gibson", "Blue");
         Guitar.setGuitarsList(2, "Cort", "Accord");
         Guitar.setGuitarsList(3, "Boobs", "More Boobs");
         GuitarsDto guitar = Guitar.findGuitarByModel(model);
-        value = String.valueOf(guitar);
-        return value;
+        String json = new Gson().toJson(guitar);
+        return json;
     }
 
     @DELETE
