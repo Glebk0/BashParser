@@ -1,8 +1,9 @@
 package by.zelenevsky.execute;
 
-import java.sql.*;
-import by.zelenevsky.rest.Guitar;
+import by.zelenevsky.dto.GuitarsDto;
+import by.zelenevsky.rest.Client;
 
+import java.sql.*;
 
 public class DataConnecter {
 
@@ -13,20 +14,19 @@ public class DataConnecter {
     private static Statement statement;
     private static ResultSet resultSet;
 
-    public static void connect(){
+    public static void fillList(){
         try {
-            Guitar guitar = new Guitar();
             connection = DriverManager.getConnection(url, user, password);
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select  brand.name, model.name, availability.quantity " +
                     "from brand, model, availability  " +
                     "where availability.model_id = model.id and model.brand_id = brand.id");
             while(resultSet.next()) {
-                guitar.setGuitarsList(
-                        resultSet.getInt(3),
-                        resultSet.getString(1),
-                        resultSet.getString(2)
-                );
+                GuitarsDto gdto = new GuitarsDto();
+                gdto.setBrandName(resultSet.getString(1));
+                gdto.setModelName(resultSet.getString(2));
+                gdto.setSerial(resultSet.getLong(3));
+                Client.guitarsList.add(gdto);
             }
         } catch (SQLException sqlEx) {
             sqlEx.printStackTrace();
@@ -38,16 +38,3 @@ public class DataConnecter {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
