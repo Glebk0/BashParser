@@ -1,12 +1,11 @@
 package by.zelenevsky.dto;
 
-public class GuitarsDto {
+public class ModelsDto {
 
     private long id;
-    private String brandName;
     private String modelName;
     private long serialNumber;
-
+    private double price;
 
     public long getId() {
         return id;
@@ -14,14 +13,6 @@ public class GuitarsDto {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
     }
 
     public String getModelName() {
@@ -39,4 +30,13 @@ public class GuitarsDto {
     public void setSerialNumber(long serialNumber) {
         this.serialNumber = serialNumber;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
 }
