@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июн 13 2017 г., 09:05
+-- Время создания: Июн 14 2017 г., 14:58
 -- Версия сервера: 5.5.23
 -- Версия PHP: 7.1.5
 
@@ -40,7 +40,7 @@ CREATE TABLE `availability` (
 --
 
 INSERT INTO `availability` (`id`, `model_id`, `serial_number`, `status`) VALUES
-(1, 1, 225904, 1),
+(1, 1, 225904, 0),
 (2, 1, 114052, 1),
 (3, 1, 648521, 1),
 (4, 1, 654891, 1),
@@ -68,7 +68,7 @@ INSERT INTO `availability` (`id`, `model_id`, `serial_number`, `status`) VALUES
 (26, 10, 445825, 1),
 (27, 11, 225488, 1),
 (28, 11, 785699, 1),
-(29, 12, 955246, 1),
+(29, 12, 955247, 1),
 (30, 13, 103255, 1),
 (31, 13, 125387, 1),
 (32, 14, 345852, 1),
@@ -117,29 +117,30 @@ INSERT INTO `brand` (`ID`, `Name`) VALUES
 CREATE TABLE `model` (
   `ID` int(11) NOT NULL,
   `Brand_ID` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL
+  `Name` varchar(30) NOT NULL,
+  `Price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `model`
 --
 
-INSERT INTO `model` (`ID`, `Brand_ID`, `Name`) VALUES
-(1, 1, 'Navojoa'),
-(2, 1, 'OMXAE BLACK'),
-(3, 1, 'Sikamore'),
-(4, 2, 'Academy'),
-(5, 2, 'MiniBoss'),
-(6, 2, 'Rosewood'),
-(7, 3, 'Dreadnought'),
-(8, 3, 'Classical'),
-(9, 3, 'Nat'),
-(10, 4, 'Vintage'),
-(11, 4, 'Antique'),
-(12, 4, 'Troubadour'),
-(13, 5, 'GoldTop'),
-(14, 5, 'Custom'),
-(15, 5, 'Junior');
+INSERT INTO `model` (`ID`, `Brand_ID`, `Name`, `Price`) VALUES
+(1, 1, 'Navojoa', 499.99),
+(2, 1, 'OMXAE BLACK', 912.99),
+(3, 1, 'Sikamore', 514.99),
+(4, 2, 'Academy', 821.99),
+(5, 2, 'MiniBoss', 615.99),
+(6, 2, 'Rosewood', 414.99),
+(7, 3, 'Dreadnought', 900.99),
+(8, 3, 'Classical', 846.99),
+(9, 3, 'Nat', 855.99),
+(10, 4, 'Vintage', 512.99),
+(11, 4, 'Antique', 640),
+(12, 4, 'Troubadour', 685.99),
+(13, 5, 'GoldTop', 675.99),
+(14, 5, 'Custom', 1000.99),
+(15, 5, 'Junior', 851.99);
 
 --
 -- Индексы сохранённых таблиц
@@ -150,6 +151,7 @@ INSERT INTO `model` (`ID`, `Brand_ID`, `Name`) VALUES
 --
 ALTER TABLE `availability`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `serial_number` (`serial_number`),
   ADD KEY `model_id` (`model_id`);
 
 --
