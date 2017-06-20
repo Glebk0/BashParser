@@ -2,6 +2,7 @@ package by.zelenevsky.rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import by.zelenevsky.dto.*;
 import by.zelenevsky.service.GuitarService;
@@ -23,15 +24,15 @@ public class GuitarResource {
     @GET
     @Path("/guitars/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ModelsDto> findModels(@PathParam ("id") long id) throws SQLException {
-        return guitarService.findModels(id);
+    public List<ModelsDto> findModels(@PathParam ("id") long modelId) throws SQLException {
+        return guitarService.findModels(modelId);
     }
 
     @GET
-    @Path ("/models/{serialNumber}")
+    @Path ("/models/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ModelsDto> getModel(@PathParam ("serialNumber") long serialNumber) throws SQLException {
-        return guitarService.findModel(serialNumber);
+    public List<ModelsDto> findModel(@PathParam ("id") long guitarId) throws SQLException {
+        return guitarService.findModel(guitarId);
     }
 
     @GET
@@ -42,9 +43,9 @@ public class GuitarResource {
     }
 
     @GET
-    @Path ("/sell/{serialNumber}")
+    @Path ("/sell/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String sellGuitar(@PathParam ("serialNumber") long serialNumber) throws SQLException {
-        return guitarService.sellGuitar(serialNumber);
+    public Response sellGuitar(@PathParam ("id") long guitarId) throws SQLException {
+        return guitarService.sellGuitar(guitarId);
     }
 }
