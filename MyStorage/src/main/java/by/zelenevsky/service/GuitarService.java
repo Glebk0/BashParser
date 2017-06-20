@@ -60,14 +60,13 @@ public class GuitarService {
         return modelsList;
     }
 
-    public List<ModelsDto> findModel(long guitarId) throws SQLException{
+    public ModelsDto findModel(long guitarId) throws SQLException{
         MysqlDataSource dataSource = new MysqlDataSource();
         setDataSourceParameters(dataSource);
-        ResultSetHandler<List<ModelsDto>> handler = new BeanListHandler<ModelsDto>(ModelsDto.class);
+        ResultSetHandler<ModelsDto> handler = new BeanHandler<ModelsDto>(ModelsDto.class);
         QueryRunner queryRunner = new QueryRunner(dataSource);
-        List<ModelsDto> modelsList;
-        modelsList = queryRunner.query(findModelQuery, handler, guitarId);
-        return modelsList;
+        ModelsDto modelsDto = queryRunner.query(findModelQuery, handler, guitarId);
+        return modelsDto;
     }
 
     public Response sellGuitar(long guitarId) throws SQLException {
