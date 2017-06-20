@@ -31,7 +31,7 @@ public class GuitarResource {
     @GET
     @Path ("/models/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ModelsDto> findModel(@PathParam ("id") long guitarId) throws SQLException {
+    public ModelsDto findModel(@PathParam ("id") long guitarId) throws SQLException {
         return guitarService.findModel(guitarId);
     }
 
