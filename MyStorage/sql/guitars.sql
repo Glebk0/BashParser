@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июн 14 2017 г., 14:58
+-- Время создания: Июн 20 2017 г., 08:23
 -- Версия сервера: 5.5.23
 -- Версия PHP: 7.1.5
 
@@ -25,70 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `availability`
---
-
-CREATE TABLE `availability` (
-  `id` int(11) NOT NULL,
-  `model_id` int(11) NOT NULL,
-  `serial_number` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Дамп данных таблицы `availability`
---
-
-INSERT INTO `availability` (`id`, `model_id`, `serial_number`, `status`) VALUES
-(1, 1, 225904, 0),
-(2, 1, 114052, 1),
-(3, 1, 648521, 1),
-(4, 1, 654891, 1),
-(5, 1, 435824, 1),
-(6, 2, 165456, 1),
-(7, 2, 115645, 1),
-(8, 2, 846351, 1),
-(9, 3, 649824, 1),
-(10, 3, 926458, 1),
-(11, 4, 452896, 1),
-(12, 4, 452897, 1),
-(13, 4, 397562, 1),
-(14, 5, 156879, 1),
-(15, 5, 456825, 1),
-(16, 6, 697542, 1),
-(17, 6, 745632, 1),
-(18, 6, 468534, 1),
-(19, 7, 456853, 1),
-(20, 7, 469825, 1),
-(21, 7, 456852, 1),
-(22, 8, 458625, 1),
-(23, 9, 468524, 1),
-(24, 9, 658245, 1),
-(25, 10, 753542, 1),
-(26, 10, 445825, 1),
-(27, 11, 225488, 1),
-(28, 11, 785699, 1),
-(29, 12, 955247, 1),
-(30, 13, 103255, 1),
-(31, 13, 125387, 1),
-(32, 14, 345852, 1),
-(33, 14, 397850, 1),
-(34, 15, 112359, 1),
-(35, 15, 115866, 1),
-(42, 10, 445820, 1),
-(43, 11, 225486, 1),
-(44, 11, 785692, 1),
-(45, 12, 955246, 1),
-(46, 13, 103254, 1),
-(47, 13, 125386, 1),
-(48, 14, 346852, 1),
-(49, 14, 397852, 1),
-(50, 15, 112358, 1),
-(51, 15, 115865, 1);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `brand`
 --
 
@@ -106,7 +42,59 @@ INSERT INTO `brand` (`ID`, `Name`) VALUES
 (2, 'Taylor'),
 (3, 'Takamine'),
 (4, 'Guild'),
-(5, 'Gibson');
+(5, 'Deep');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `description`
+--
+
+CREATE TABLE `description` (
+  `id` int(11) NOT NULL,
+  `serial_number` int(11) NOT NULL,
+  `model_id` int(11) NOT NULL,
+  `price` double NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `color` varchar(30) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Дамп данных таблицы `description`
+--
+
+INSERT INTO `description` (`id`, `serial_number`, `model_id`, `price`, `type`, `color`, `status`) VALUES
+(1, 101, 1, 450, 'Acoustic', 'Black', 0),
+(2, 102, 1, 420, 'Acoustic', 'White', 1),
+(3, 103, 2, 600, 'Acoustic', 'Black', 1),
+(4, 104, 2, 630, 'Acoustic', 'White', 1),
+(5, 105, 3, 1000, 'Electro', 'Coral', 1),
+(6, 106, 3, 1200, 'Electro', 'Blue', 1),
+(7, 107, 4, 360, 'Acoustic', 'White', 1),
+(8, 108, 4, 360, 'Acoustic', 'Yellow', 0),
+(9, 109, 5, 520, 'Acoustic', 'Black', 1),
+(10, 110, 5, 525, 'Acoustic', 'Red', 1),
+(11, 111, 6, 399, 'Acoustic', 'White', 1),
+(12, 112, 6, 422, 'Acoustic', 'Grey', 1),
+(13, 113, 7, 900, 'Electro', 'White', 1),
+(14, 114, 7, 980, 'Electro', 'Fire Spray', 1),
+(15, 115, 8, 990, 'Electro-acoustic', 'White', 1),
+(16, 116, 8, 990, 'Electro-acoustic', 'Yellow', 1),
+(17, 117, 9, 450, 'Acoustic', 'White', 1),
+(18, 118, 9, 450, 'Acoustic', 'Dark yellow', 1),
+(19, 119, 10, 500, 'Acoustic', 'White', 1),
+(20, 120, 10, 555, 'Acoustic', 'Brown', 1),
+(21, 121, 11, 400, 'Acoustic', 'White', 1),
+(22, 122, 11, 400, 'Acoustic', 'Black', 1),
+(23, 123, 12, 320, 'Acoustic', 'White', 1),
+(24, 124, 12, 325, 'Acoustic', 'Orange', 1),
+(25, 125, 13, 550, 'Acoustic', 'White', 1),
+(26, 126, 13, 550, 'Acoustic', 'Purple', 1),
+(27, 127, 14, 800, 'Electro', 'Black', 1),
+(28, 128, 14, 780, 'Electro', 'Blue', 1),
+(29, 129, 15, 415, 'Acoustic', 'White', 1),
+(30, 130, 15, 430, 'Acoustic', 'Smoke on the water', 1);
 
 -- --------------------------------------------------------
 
@@ -117,48 +105,47 @@ INSERT INTO `brand` (`ID`, `Name`) VALUES
 CREATE TABLE `model` (
   `ID` int(11) NOT NULL,
   `Brand_ID` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Price` double NOT NULL
+  `Name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Дамп данных таблицы `model`
 --
 
-INSERT INTO `model` (`ID`, `Brand_ID`, `Name`, `Price`) VALUES
-(1, 1, 'Navojoa', 499.99),
-(2, 1, 'OMXAE BLACK', 912.99),
-(3, 1, 'Sikamore', 514.99),
-(4, 2, 'Academy', 821.99),
-(5, 2, 'MiniBoss', 615.99),
-(6, 2, 'Rosewood', 414.99),
-(7, 3, 'Dreadnought', 900.99),
-(8, 3, 'Classical', 846.99),
-(9, 3, 'Nat', 855.99),
-(10, 4, 'Vintage', 512.99),
-(11, 4, 'Antique', 640),
-(12, 4, 'Troubadour', 685.99),
-(13, 5, 'GoldTop', 675.99),
-(14, 5, 'Custom', 1000.99),
-(15, 5, 'Junior', 851.99);
+INSERT INTO `model` (`ID`, `Brand_ID`, `Name`) VALUES
+(1, 1, 'Navojoa'),
+(2, 1, 'OMXAE BLACK'),
+(3, 1, 'Sikamore'),
+(4, 2, 'Academy'),
+(5, 2, 'MiniBoss'),
+(6, 2, 'Rosewood'),
+(7, 3, 'Dreadnought'),
+(8, 3, 'Classical'),
+(9, 3, 'Nat'),
+(10, 4, 'Vintage'),
+(11, 4, 'Antique'),
+(12, 4, 'Troubadour'),
+(13, 5, 'GoldTop'),
+(14, 5, 'Custom'),
+(15, 5, 'Purple');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `availability`
---
-ALTER TABLE `availability`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `serial_number` (`serial_number`),
-  ADD KEY `model_id` (`model_id`);
-
---
 -- Индексы таблицы `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Индексы таблицы `description`
+--
+ALTER TABLE `description`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `serial_number` (`serial_number`),
+  ADD KEY `model_id` (`model_id`);
 
 --
 -- Индексы таблицы `model`
@@ -172,15 +159,15 @@ ALTER TABLE `model`
 --
 
 --
--- AUTO_INCREMENT для таблицы `availability`
---
-ALTER TABLE `availability`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
---
 -- AUTO_INCREMENT для таблицы `brand`
 --
 ALTER TABLE `brand`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT для таблицы `description`
+--
+ALTER TABLE `description`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT для таблицы `model`
 --
@@ -191,10 +178,10 @@ ALTER TABLE `model`
 --
 
 --
--- Ограничения внешнего ключа таблицы `availability`
+-- Ограничения внешнего ключа таблицы `description`
 --
-ALTER TABLE `availability`
-  ADD CONSTRAINT `availability_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `model` (`ID`);
+ALTER TABLE `description`
+  ADD CONSTRAINT `description_ibfk_1` FOREIGN KEY (`model_id`) REFERENCES `model` (`ID`);
 
 --
 -- Ограничения внешнего ключа таблицы `model`
