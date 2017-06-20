@@ -5,6 +5,8 @@ public class ModelsDto {
     private long id;
     private String modelName;
     private long serialNumber;
+    private String type;
+    private String color;
     private double price;
 
     public long getId() {
@@ -31,6 +33,22 @@ public class ModelsDto {
         this.serialNumber = serialNumber;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -38,5 +56,6 @@ public class ModelsDto {
     public void setPrice(double price) {
         this.price = price;
     }
+
 
 }
