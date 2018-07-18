@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.zelenevsky.parser</groupId>
-    <artifactId>MyParser</artifactId>
+    <artifactId>BashParser</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -17,7 +17,7 @@
     </dependencies>
 
     <build>
-        <finalName>MyParser</finalName>
+        <finalName>BashParser</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
